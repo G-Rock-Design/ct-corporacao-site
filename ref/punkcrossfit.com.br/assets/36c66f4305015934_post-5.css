@@ -1,0 +1,136 @@
+.elementor-kit-5{--e-global-color-primary:#000000;--e-global-color-secondary:#EF4123;--e-global-color-text:#E7E7E7;--e-global-color-accent:#FFFFFF;--e-global-typography-primary-font-family:"Blender";--e-global-typography-primary-font-weight:500;--e-global-typography-secondary-font-family:"Blender";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Blender";--e-global-typography-text-font-weight:300;--e-global-typography-accent-font-family:"Blender";--e-global-typography-accent-font-weight:200;--e-global-typography-b10df33-font-family:"PUNK CROSSFIT";--e-global-typography-b10df33-font-weight:800;--e-global-typography-bc2c1f0-font-family:"Post No Bills";--e-global-typography-bc2c1f0-font-weight:900;}.elementor-kit-5 e-page-transition{background-color:#FFBC7D;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;}.elementor-widget:not(:last-child){margin-block-end:20px;}.elementor-element{--widgets-spacing:20px 20px;--widgets-spacing-row:20px;--widgets-spacing-column:20px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:950px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Blender';
+	font-style: normal;
+	font-weight: 100;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Thin.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Thin.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Thin.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Thin.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Thin.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: italic;
+	font-weight: 100;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-ThinItalic.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-ThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-ThinItalic.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-ThinItalic.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-ThinItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: normal;
+	font-weight: 200;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Book.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Book.eot?#iefix') format('embedded-opentype'),
+		url("8b0e0b36bc9ec047_BlenderPro-Book.woff2") format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Book.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Book.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: italic;
+	font-weight: 200;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BookItalic.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BookItalic.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BookItalic.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BookItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: normal;
+	font-weight: 300;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Medium.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Medium.eot?#iefix') format('embedded-opentype'),
+		url("9b376cd12b6ea3e0_BlenderPro-Medium.woff2") format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Medium.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Medium.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: italic;
+	font-weight: 300;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-MediumItalic.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-MediumItalic.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-MediumItalic.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: normal;
+	font-weight: 400;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Bold.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Bold.eot?#iefix') format('embedded-opentype'),
+		url("df1e951311574389_BlenderPro-Bold.woff2") format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Bold.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: italic;
+	font-weight: 400;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BoldItalic.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BoldItalic.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BoldItalic.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Blender';
+	font-style: normal;
+	font-weight: 500;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Heavy.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Heavy.eot?#iefix') format('embedded-opentype'),
+		url("cdd1144d67ec15a7_BlenderPro-Heavy.woff2") format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Heavy.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/BlenderPro-Heavy.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'PUNK CROSSFIT';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.ttf') format('truetype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/05/Punk-CrossFit-Bold.svg#PUNKCROSSFIT') format('svg');
+}
+/* End Custom Fonts CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Post No Bills';
+	font-style: normal;
+	font-weight: 800;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-Bold.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-Bold.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-Bold.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-Bold.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Post No Bills';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-ExtraBold.eot');
+	src: url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-ExtraBold.eot?#iefix') format('embedded-opentype'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-ExtraBold.woff2') format('woff2'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-ExtraBold.woff') format('woff'),
+		url('https://punkcrossfit.com.br/wp-content/uploads/2024/04/PostNoBillsColombo-ExtraBold.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */

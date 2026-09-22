@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0A0A0C;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .bg-animated-mesh {
+    background-color: #0A0A0C;
+    background-image: 
+        radial-gradient(at 40% 20%, hsla(358, 86%, 52%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(210, 100%, 15%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(358, 86%, 52%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(189, 100%, 25%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(358, 86%, 52%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(210, 100%, 15%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(358, 86%, 52%, 0.05) 0px, transparent 50%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+  }
+
+  .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  }
+  
+  .glass-dark {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+      border: 1px solid rgba(237, 28, 36, 0.3);
+      box-shadow: 0 10px 40px rgba(237, 28, 36, 0.15), inset 0 0 20px rgba(237, 28, 36, 0.05);
+      transform: translateY(-5px);
+  }
+
+  .text-transparent-outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  }
+  
+  .text-transparent-outline-thick {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+      text-shadow: 0px 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .text-shimmer-gradient {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 1) 40%,
+        rgba(255, 255, 255, 1) 100%
+      );
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+  }
+
+  .text-shimmer-red {
+      background: linear-gradient(
+        90deg,
+        #ED1C24 0%,
+        #ff4d54 20%,
+        #ED1C24 40%,
+        #ED1C24 100%
+      );
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+  }
+
+  .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  }
+
+  /* Animated glowing border effect */
+  .glow-border {
+      position: relative;
+  }
+  .glow-border::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #ED1C24, #75CEE5, #ED1C24);
+      background-size: 400% 400%;
+      animation: borderFlow 3s ease infinite;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+  .glow-border:hover::before {
+      opacity: 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #292A2D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ED1C24;
+}
+
+html {
+  scroll-behavior: smooth;
+}

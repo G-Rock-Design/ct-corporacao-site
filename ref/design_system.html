@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Design System - CT Corporação</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS References based on the provided files (finex-finance-saas) -->
+    <link rel="stylesheet" href="finex-finance-saas.aura.build/assets/css/base.css"/>
+    <link rel="stylesheet" href="finex-finance-saas.aura.build/assets/css/fonts.css"/>
+    <link rel="stylesheet" href="finex-finance-saas.aura.build/assets/css/animations.css"/>
+    <link rel="stylesheet" href="finex-finance-saas.aura.build/assets/css/components.css"/>
+
+    <!-- Tailwind Play CDN for immediate prototyping (since we need to combine external classes reliably) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        oswald: ['Oswald', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6', // Teal
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        secondary: {
+                            500: '#3b82f6', // Blue
+                        },
+                        accent: {
+                            500: '#8b5cf6', // Violet
+                        },
+                        dark: '#050505',
+                        light: '#ffffff'
+                    },
+                    animation: {
+                        'spin-slow': 'spin 15s linear infinite',
+                        'spin-slow-reverse': 'spin 15s linear infinite reverse',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(20, 184, 166, 0.4)' },
+                            '50%': { opacity: '.5', boxShadow: '0 0 40px rgba(20, 184, 166, 0.8)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Design System Styles */
+        body {
+            background-color: #fafafa;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Gradients */
+        .bg-animated-mesh {
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(210, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189, 100%, 93%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(280, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(340, 100%, 96%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(22, 100%, 94%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(242, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(343, 100%, 96%, 1) 0px, transparent 50%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        
+        .glass-dark {
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        /* Transparent Lettering - Foco do Pedido */
+        .text-transparent-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.15);
+        }
+        
+        .text-transparent-outline-thick {
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(17, 24, 39, 0.9);
+            text-shadow: 0px 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .text-transparent-outline-thick-light {
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
+            text-shadow: 0px 4px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .text-transparent-outline-white {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Scroll Revel Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Grid Pattern */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        }
+    </style>
+</head>
+<body class="bg-animated-mesh min-h-screen">
+
+    <!-- Background blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-teal-200/40 mix-blend-multiply filter blur-[100px] animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] rounded-full bg-blue-200/40 mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[45vw] h-[45vw] rounded-full bg-purple-200/40 mix-blend-multiply filter blur-[100px] animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- 1. HERO DE DEMONSTRAÇÃO (PRIMEIRA DOBRA) -->
+    <header class="relative z-10 min-h-screen flex flex-col items-center justify-center pt-20 pb-32 px-6 overflow-hidden bg-[#0A0A0C]">
+        
+        <!-- Dark Aura Effect from Finex -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-600/20 mix-blend-screen filter blur-[120px] animate-blob"></div>
+            <div class="absolute top-[10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-teal-500/20 mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <!-- Animated Navbar for Hero Demo -->
+        <nav class="flex z-50 fixed w-full pt-6 px-4 top-0 right-0 left-0 items-center justify-center reveal active">
+            <div class="flex bg-black/60 w-full max-w-5xl border border-white/10 rounded-full py-1.5 px-2 relative shadow-2xl backdrop-blur-xl items-center justify-between hover:border-white/20 transition-colors duration-500">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 pl-3 z-10">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-white font-bold font-outfit shadow-lg shadow-teal-500/30">
+                        CT
+                    </div>
+                    <span class="font-outfit font-bold text-white tracking-tight text-lg">Corporação</span>
+                </div>
+                
+                <!-- Centralized Links -->
+                <div class="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2 items-center">
+                    <a href="#typography" class="text-[14px] hover:text-white text-gray-300 transition-colors font-medium tracking-wide">Tipografia</a>
+                    <a href="#colors" class="text-[14px] hover:text-white text-gray-300 transition-colors font-medium tracking-wide">Cores</a>
+                    <a href="#components" class="text-[14px] hover:text-white text-gray-300 transition-colors font-medium tracking-wide">Componentes</a>
+                    <a href="#animations" class="text-[14px] hover:text-white text-gray-300 transition-colors font-medium tracking-wide">Animações</a>
+                </div>
+
+                <!-- CTA & Mobile Menu -->
+                <div class="flex items-center gap-4 z-10">
+                    <button class="md:hidden p-2 text-white"><i data-lucide="menu" class="w-6 h-6"></i></button>
+                    <a class="hidden md:flex group transition-all duration-300 hover:bg-white/10 hover:border-teal-400 hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] hover:-translate-y-0.5 items-center justify-center bg-white/5 border border-white/20 rounded-full py-2.5 px-6" href="#">
+                        <span class="uppercase text-[13px] font-semibold text-white tracking-tight">Começar</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="absolute inset-0 bg-grid-pattern opacity-10 z-[-1]"></div>
+
+        <!-- Hero Content -->
+        <div class="max-w-6xl mx-auto w-full text-center mt-12 relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-gray-300 mb-8 animate-fade-up shadow-sm backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse shadow-[0_0_8px_rgba(45,212,191,0.8)]"></span>
+                Design System v1.0
+            </div>
+
+            <h1 class="text-6xl md:text-8xl lg:text-[100px] font-outfit font-black tracking-tighter leading-[0.9] text-white mb-6 animate-fade-up" style="animation-delay: 0.1s">
+                Design Fora da
+                <br />
+                <span class="text-transparent-outline-thick-light relative inline-block mt-2">
+                    CAIXA
+                    <div class="absolute -inset-2 bg-gradient-to-r from-teal-400/20 to-blue-500/20 blur-2xl -z-10 rounded-full"></div>
+                </span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-10 animate-fade-up" style="animation-delay: 0.2s">
+                Uma biblioteca de componentes e padrões visuais focada em uma estética 
+                <span class="font-semibold text-white">clara, transparente e animada</span>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay: 0.3s">
+                <button class="group relative px-8 py-4 bg-white text-black rounded-full font-semibold text-lg overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-all duration-300">
+                    <span class="relative z-10 flex items-center gap-2">
+                        Explorar Componentes
+                        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                    </span>
+                </button>
+                <button class="group px-8 py-4 bg-white/5 text-white rounded-full font-semibold text-lg border border-white/10 hover:bg-white/10 hover:border-white/20 backdrop-blur-md transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="play-circle" class="w-5 h-5 text-teal-400"></i>
+                    Ver Animações
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard / UI Mockup (Floating) -->
+        <div class="w-full max-w-5xl mt-20 relative animate-fade-up" style="animation-delay: 0.5s">
+            <div class="absolute -inset-4 bg-gradient-to-r from-teal-500/30 to-blue-500/30 blur-3xl -z-10 rounded-[3rem]"></div>
+            
+            <div class="glass rounded-3xl border border-white p-4 shadow-2xl overflow-hidden relative group">
+                <!-- Mac UI Dots -->
+                <div class="flex items-center gap-2 mb-4 px-2">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+
+                <div class="bg-white/50 rounded-2xl border border-white/60 p-6 backdrop-blur-md grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Demo Card 1 -->
+                    <div class="bg-white rounded-xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all transform hover:-translate-y-1">
+                        <div class="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center text-teal-600 mb-4">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <h3 class="font-outfit font-semibold text-lg mb-1">Performance</h3>
+                        <p class="text-sm text-gray-500 font-light">Animações otimizadas com GPU e Tailwind.</p>
+                    </div>
+                    <!-- Demo Card 2 -->
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 shadow-xl text-white transform hover:scale-105 transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mb-4 border border-white/20 backdrop-blur-md">
+                            <i data-lucide="palette"></i>
+                        </div>
+                        <h3 class="font-outfit font-semibold text-lg mb-1">Cores Vibrantes</h3>
+                        <p class="text-sm text-gray-300 font-light">Gradientes e vidro com alta legibilidade.</p>
+                    </div>
+                    <!-- Demo Card 3 -->
+                    <div class="bg-white rounded-xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 relative group overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <i data-lucide="box" class="w-20 h-20"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                            <i data-lucide="layout"></i>
+                        </div>
+                        <h3 class="font-outfit font-semibold text-lg mb-1">Componentes</h3>
+                        <p class="text-sm text-gray-500 font-light">Prontos para uso, modulares e responsivos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. TIPOGRAFIA -->
+    <section id="typography" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 reveal">
+                <span class="text-teal-600 font-mono font-medium text-sm tracking-widest uppercase mb-2 block">01 — Fundamentos</span>
+                <h2 class="text-5xl font-outfit font-bold text-gray-900 tracking-tight">
+                    Tipografia <span class="text-transparent-outline">Elegante</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Font Families -->
+                <div class="space-y-8 reveal">
+                    <div class="glass p-8 rounded-3xl border border-white">
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Primary Display (Outfit)</h3>
+                        <div class="font-outfit">
+                            <div class="text-6xl font-black mb-2 text-gray-900">Aa</div>
+                            <div class="text-lg text-gray-600 font-light">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>a b c d e f g h i j k l m n o p q r s t u v w x y z<br>0 1 2 3 4 5 6 7 8 9</div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-3xl border border-white">
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Secondary & Body (Inter)</h3>
+                        <div class="font-sans">
+                            <div class="text-6xl font-bold mb-2 text-gray-900">Aa</div>
+                            <div class="text-lg text-gray-600 font-light">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>a b c d e f g h i j k l m n o p q r s t u v w x y z<br>0 1 2 3 4 5 6 7 8 9</div>
+                        </div>
+                    </div>
+
+                    <div class="glass p-8 rounded-3xl border border-white">
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-6">Alternate Headings (Oswald)</h3>
+                        <div class="font-oswald">
+                            <div class="text-6xl font-medium mb-2 text-gray-900 uppercase">Aa</div>
+                            <div class="text-lg text-gray-600 font-light uppercase">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>0 1 2 3 4 5 6 7 8 9</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type Scale -->
+                <div class="glass p-8 rounded-3xl border border-white reveal flex flex-col justify-between">
+                    <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-8">Type Scale & Roles</h3>
+                    
+                    <div class="space-y-6 flex-1">
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H1 / Outfit Black / 96px / 0.9 LH / -2% LS</p>
+                            <h1 class="text-6xl md:text-8xl font-outfit font-black tracking-tighter leading-[0.9]">Heading 1</h1>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H2 / Outfit Bold / 60px / 1.1 LH / -1% LS</p>
+                            <h2 class="text-5xl md:text-6xl font-outfit font-bold tracking-tight leading-[1.1]">Heading 2</h2>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H3 / Oswald Medium / 48px / 1.2 LH / Normal LS</p>
+                            <h3 class="text-4xl md:text-5xl font-oswald font-medium uppercase leading-[1.2]">Heading 3</h3>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H4 / Outfit SemiBold / 30px / 1.3 LH / Normal LS</p>
+                            <h4 class="text-3xl font-outfit font-semibold leading-[1.3]">Heading 4</h4>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H5 / Inter Medium / 20px / 1.4 LH / Normal LS</p>
+                            <h5 class="text-xl font-sans font-medium leading-[1.4]">Heading 5</h5>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">H6 / Inter SemiBold / 16px / 1.5 LH / 0.05em LS / Uppercase</p>
+                            <h6 class="text-base font-sans font-semibold uppercase tracking-wider leading-[1.5]">Heading 6</h6>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mt-8">
+                        <div>
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">Body Large / Inter Light / 20px / 1.6 LH</p>
+                            <p class="text-xl font-sans font-light text-gray-600 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">Body Default / Inter Regular / 16px / 1.5 LH</p>
+                            <p class="text-base font-sans font-normal text-gray-600 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-mono text-gray-400 mb-1">Caption / Inter Medium / 12px / 1.4 LH / Uppercase</p>
+                            <p class="text-xs font-sans font-medium text-gray-500 uppercase tracking-widest">Lorem ipsum dolor sit amet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SISTEMA DE CORES -->
+    <section id="colors" class="relative z-10 py-24 px-6 bg-white/40 border-y border-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 reveal">
+                <span class="text-teal-600 font-mono font-medium text-sm tracking-widest uppercase mb-2 block">02 — Paleta</span>
+                <h2 class="text-5xl font-outfit font-bold text-gray-900 tracking-tight">
+                    Sistema de <span class="text-transparent-outline">Cores</span>
+                </h2>
+                <p class="text-gray-500 mt-4 max-w-2xl font-light">Tons neutros claros para a base, complementados por azuis e teals vibrantes para ações e destaques, garantindo contraste AAA em textos.</p>
+            </div>
+
+            <!-- Primary Colors -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal mb-12">
+                <!-- Color Card 1 -->
+                <div class="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-32 rounded-2xl bg-teal-500 mb-4 shadow-inner relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="font-outfit font-semibold text-lg text-gray-900">Primary Teal</h3>
+                    <p class="text-sm font-mono text-gray-500 mb-2">#14B8A6</p>
+                    <div class="flex gap-2">
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Brand</span>
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Action</span>
+                    </div>
+                </div>
+                
+                <!-- Color Card 2 -->
+                <div class="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-32 rounded-2xl bg-blue-500 mb-4 shadow-inner relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="font-outfit font-semibold text-lg text-gray-900">Secondary Blue</h3>
+                    <p class="text-sm font-mono text-gray-500 mb-2">#3B82F6</p>
+                    <div class="flex gap-2">
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Accent</span>
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Links</span>
+                    </div>
+                </div>
+
+                <!-- Color Card 3 -->
+                <div class="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-32 rounded-2xl bg-gray-900 mb-4 shadow-inner relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="font-outfit font-semibold text-lg text-gray-900">Dark Surface</h3>
+                    <p class="text-sm font-mono text-gray-500 mb-2">#111827</p>
+                    <div class="flex gap-2">
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Headings</span>
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Contrast BG</span>
+                    </div>
+                </div>
+
+                <!-- Color Card 4 -->
+                <div class="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-32 rounded-2xl bg-[#FAFAFA] border border-gray-200 mb-4 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h3 class="font-outfit font-semibold text-lg text-gray-900">Light Base</h3>
+                    <p class="text-sm font-mono text-gray-500 mb-2">#FAFAFA</p>
+                    <div class="flex gap-2">
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Background</span>
+                        <span class="text-[10px] px-2 py-1 bg-gray-100 rounded-md font-medium text-gray-600">Cards</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gradients & Roles -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                <div class="glass p-8 rounded-3xl border border-white">
+                    <h3 class="text-xl font-outfit font-semibold mb-6">Gradientes Oficiais</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-400 to-blue-500 shadow-md"></div>
+                            <div>
+                                <p class="font-medium text-gray-900">Brand Gradient</p>
+                                <p class="text-xs text-gray-500 font-mono">from-teal-400 to-blue-500</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-gradient-to-r from-gray-900 to-gray-800 shadow-md"></div>
+                            <div>
+                                <p class="font-medium text-gray-900">Dark Gradient</p>
+                                <p class="text-xs text-gray-500 font-mono">from-gray-900 to-gray-800</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-white to-gray-50 border border-gray-200 shadow-sm"></div>
+                            <div>
+                                <p class="font-medium text-gray-900">Glass Gradient</p>
+                                <p class="text-xs text-gray-500 font-mono">from-white to-gray-50 (with blur)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border border-white">
+                    <h3 class="text-xl font-outfit font-semibold mb-6">Semantic Feedback</h3>
+                    <div class="space-y-4 w-full">
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-green-50 border border-green-100">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                <span class="text-sm font-medium text-green-800">Success (#22C55E)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-red-50 border border-red-100">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="alert-circle" class="w-5 h-5 text-red-500"></i>
+                                <span class="text-sm font-medium text-red-800">Danger (#EF4444)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-yellow-50 border border-yellow-100">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-500"></i>
+                                <span class="text-sm font-medium text-yellow-800">Warning (#F59E0B)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-blue-50 border border-blue-100">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="info" class="w-5 h-5 text-blue-500"></i>
+                                <span class="text-sm font-medium text-blue-800">Info (#3B82F6)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. UI COMPONENTS -->
+    <section id="components" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 reveal">
+                <span class="text-teal-600 font-mono font-medium text-sm tracking-widest uppercase mb-2 block">03 — Módulos</span>
+                <h2 class="text-5xl font-outfit font-bold text-gray-900 tracking-tight">
+                    UI <span class="text-transparent-outline">Components</span>
+                </h2>
+                <p class="text-gray-500 mt-4 max-w-2xl font-light">Elementos modulares interativos com micro-animações, hover states e design baseado em glassmorphism.</p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Buttons & Badges -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                    <!-- Buttons -->
+                    <div class="glass p-8 rounded-3xl border border-white">
+                        <h3 class="text-xl font-outfit font-semibold mb-8 text-gray-900 border-b border-gray-200 pb-2">Botões</h3>
+                        <div class="space-y-6">
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <!-- Solid Primary -->
+                                <button class="group relative px-6 py-3 bg-gray-900 text-white rounded-full font-medium text-sm overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-teal-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <span class="relative z-10 flex items-center gap-2">
+                                        Primary Button
+                                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                                    </span>
+                                </button>
+                                
+                                <!-- Secondary Glass -->
+                                <button class="group px-6 py-3 bg-white/80 backdrop-blur-sm text-gray-900 rounded-full font-medium text-sm border border-gray-200 hover:bg-white hover:border-teal-300 hover:shadow-[0_0_15px_rgba(20,184,166,0.2)] transition-all duration-300 flex items-center gap-2">
+                                    <i data-lucide="settings" class="w-4 h-4 text-gray-500 group-hover:text-teal-500 transition-colors group-hover:rotate-90 duration-500"></i>
+                                    Secondary Glass
+                                </button>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-4 items-center">
+                                <!-- Outline -->
+                                <button class="px-5 py-2.5 rounded-full font-medium text-sm border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                                    Outline
+                                </button>
+                                
+                                <!-- Ghost / Text -->
+                                <button class="px-4 py-2 font-medium text-sm text-gray-600 hover:text-teal-600 transition-colors relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-teal-500 hover:after:w-full after:transition-all after:duration-300">
+                                    Ghost Button
+                                </button>
+                                
+                                <!-- Icon Only -->
+                                <button class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-teal-600 hover:border-teal-300 hover:shadow-md transition-all hover:scale-105">
+                                    <i data-lucide="heart" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badges & Tooltips -->
+                    <div class="glass p-8 rounded-3xl border border-white">
+                        <h3 class="text-xl font-outfit font-semibold mb-8 text-gray-900 border-b border-gray-200 pb-2">Badges & Tooltips</h3>
+                        
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-semibold border border-teal-100 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span> Active
+                            </span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium border border-gray-200">
+                                Neutral
+                            </span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium border border-blue-100 flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i> Featured
+                            </span>
+                            <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium border border-red-100">
+                                Error
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-8 mt-12">
+                            <!-- Tooltip Top -->
+                            <div class="relative group cursor-pointer">
+                                <span class="text-gray-600 border-b border-dashed border-gray-400">Passe o mouse</span>
+                                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    Tooltip de informação
+                                    <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs & Forms -->
+                <div class="glass p-8 rounded-3xl border border-white reveal">
+                    <h3 class="text-xl font-outfit font-semibold mb-8 text-gray-900 border-b border-gray-200 pb-2">Inputs & Formulários</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Standard Input -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i data-lucide="mail" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <input type="email" class="w-full bg-white border border-gray-200 rounded-xl py-2.5 pl-10 pr-4 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all shadow-sm" placeholder="voce@exemplo.com">
+                            </div>
+                        </div>
+
+                        <!-- Select -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Categoria</label>
+                            <div class="relative">
+                                <select class="w-full bg-white border border-gray-200 rounded-xl py-2.5 pl-4 pr-10 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all shadow-sm appearance-none cursor-pointer">
+                                    <option>Design System</option>
+                                    <option>Desenvolvimento</option>
+                                    <option>Marketing</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Toggle -->
+                        <div class="flex flex-col justify-center">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Notificações</label>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-500"></div>
+                                <span class="ml-3 text-sm font-medium text-gray-600">Ativado</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards & Sections -->
+                <div class="reveal">
+                    <h3 class="text-xl font-outfit font-semibold mb-8 text-gray-900 border-b border-gray-200 pb-2">Cards Interativos</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Data / Metric -->
+                        <div class="bg-white rounded-[2rem] border border-gray-100 p-6 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden relative">
+                            <div class="absolute -right-4 -top-4 w-24 h-24 bg-teal-50 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out z-0"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-teal-600 shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                                    <i data-lucide="trending-up"></i>
+                                </div>
+                                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Crescimento</p>
+                                <h4 class="text-4xl font-outfit font-light text-gray-900 tracking-tight mb-2">+124%</h4>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded bg-green-50 text-green-600 text-xs font-medium">+12%</span>
+                                    <span class="text-xs text-gray-400">vs mês passado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Feature -->
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-[2rem] border border-gray-700 p-6 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group overflow-hidden relative">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+                            <div class="relative z-10 flex flex-col h-full">
+                                <div class="flex justify-between items-start mb-12">
+                                    <i data-lucide="shield" class="w-8 h-8 text-blue-400 group-hover:animate-pulse"></i>
+                                    <span class="px-2 py-1 rounded bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">Pro</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-outfit font-semibold text-white mb-2">Segurança Avançada</h4>
+                                    <p class="text-sm text-gray-400 font-light leading-relaxed">Proteção em tempo real com criptografia ponta a ponta para todos os dados.</p>
+                                </div>
+                                <div class="mt-6 flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 cursor-pointer">
+                                    Saiba mais <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Image/Profile -->
+                        <div class="bg-white rounded-[2rem] border border-gray-100 p-2 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                            <div class="h-32 bg-gradient-to-r from-teal-400 to-blue-500 rounded-2xl mb-4 overflow-hidden relative">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            </div>
+                            <div class="px-4 pb-4">
+                                <h4 class="text-lg font-outfit font-semibold text-gray-900">Design System</h4>
+                                <p class="text-sm text-gray-500 mb-4">Atualizado há 2 horas</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex -space-x-2">
+                                        <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">AB</div>
+                                        <div class="w-8 h-8 rounded-full bg-teal-100 border-2 border-white flex items-center justify-center text-xs font-medium text-teal-600">CD</div>
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-500">+3</div>
+                                    </div>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition-colors">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals (Static Preview) -->
+                <div class="glass p-8 rounded-3xl border border-white reveal flex items-center justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PG1hdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDEwaDQwTTAgMjBoNDBNMCAzMGg0ME0xMCAwdjQwTTIwIDB2NDBNMzAgMHY0MCIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuMDUpIi8+PC9zdmc+')]">
+                    <div class="bg-white rounded-2xl w-full max-w-md shadow-2xl overflow-hidden border border-gray-100 animate-float">
+                        <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                            <h4 class="font-outfit font-semibold text-lg text-gray-900">Confirmar Ação</h4>
+                            <button class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 text-sm mb-6">Você está prestes a aplicar este design system em toda a corporação. Esta ação irá atualizar as variáveis globais.</p>
+                            <div class="flex gap-3 justify-end">
+                                <button class="px-4 py-2 font-medium text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">Cancelar</button>
+                                <button class="px-4 py-2 font-medium text-sm bg-gray-900 text-white hover:bg-gray-800 rounded-lg transition-colors shadow-md">Aplicar Agora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ICONOGRAFIA E DETALHES -->
+    <section class="relative z-10 py-24 px-6 bg-gray-900 text-white overflow-hidden">
+        <!-- Dark Section Background Animation -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-800 via-gray-900 to-black"></div>
+        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-50"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="mb-16 text-center reveal">
+                <span class="text-teal-400 font-mono font-medium text-sm tracking-widest uppercase mb-2 block">04 — Iconografia</span>
+                <h2 class="text-5xl font-outfit font-bold text-white tracking-tight">
+                    Ícones & <span class="text-transparent-outline-white">Visuals</span>
+                </h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto font-light">Utilizamos a biblioteca Lucide Icons com espessura customizada para combinar com a leveza tipográfica.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 reveal">
+                <!-- Icon Grid -->
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="zap" class="w-8 h-8 text-teal-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">zap</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="layers" class="w-8 h-8 text-blue-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">layers</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="cpu" class="w-8 h-8 text-purple-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">cpu</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="fingerprint" class="w-8 h-8 text-pink-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">fingerprint</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="globe" class="w-8 h-8 text-emerald-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">globe</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="pie-chart" class="w-8 h-8 text-yellow-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">pie-chart</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="compass" class="w-8 h-8 text-red-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">compass</span>
+                </div>
+                <div class="glass-dark aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all cursor-pointer group">
+                    <i data-lucide="aperture" class="w-8 h-8 text-indigo-400 group-hover:text-white transition-colors" stroke-width="1.5"></i>
+                    <span class="text-[10px] text-gray-400 font-mono">aperture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / DEMO END -->
+    <footer class="py-12 text-center bg-white border-t border-gray-100">
+        <p class="text-sm text-gray-500 font-medium">Design System construído para CT Corporação.</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <div class="w-2 h-2 rounded-full bg-teal-400"></div>
+            <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+            <div class="w-2 h-2 rounded-full bg-gray-900"></div>
+        </div>
+    </footer>
+
+    <!-- Scripts para inicialização -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll Reveal Animation Script
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
