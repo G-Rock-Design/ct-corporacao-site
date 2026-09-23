@@ -7,7 +7,7 @@ export function Hero() {
   const whatsappUrl = `https://wa.me/5521997572052?text=${whatsappMsg}`;
 
   return (
-    <section id="inicio" className="relative z-10 min-h-[100vh] flex flex-col items-center justify-center pt-28 pb-20 px-6 overflow-hidden bg-brand-black">
+    <section id="inicio" className="relative z-10 min-h-[100vh] flex flex-col items-center justify-center pt-24 pb-16 md:pt-32 md:pb-20 px-6 overflow-hidden bg-brand-black">
       
       {/* Immersive Background Effects & Video */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden md:static md:overflow-visible">
@@ -47,7 +47,7 @@ export function Hero() {
 
       <div className="absolute inset-0 bg-grid-pattern opacity-10 z-0"></div>
 
-      <div className="max-w-5xl mx-auto w-full text-center relative z-10 mt-12 flex flex-col items-center">
+      <div className="max-w-5xl mx-auto w-full text-center relative z-10 mt-6 md:mt-12 flex flex-col items-center">
         
         {/* Floating Badge */}
         <div className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-gray-300 mb-8 sm:mb-10 animate-fade-up shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-float-complex">
@@ -58,18 +58,18 @@ export function Hero() {
         </div>
 
         {/* Aggressive Typography */}
-        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[110px] font-outfit font-black tracking-tighter leading-[1] md:leading-[0.9] text-white mb-6 md:mb-8 animate-fade-up flex flex-col items-center" style={{ animationDelay: '0.1s' }}>
-            <span className="text-shimmer-gradient">Onde o ferro</span>
-            <span className="flex items-center gap-4 mt-2">
+        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[110px] font-outfit font-black tracking-tighter leading-[1] md:leading-[0.9] text-white mb-6 md:mb-8 animate-fade-up flex flex-col items-center" style={{ animationDelay: '0.1s' }}>
+            <span className="text-shimmer-gradient text-center">Onde o ferro</span>
+            <span className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 mt-2 md:mt-4">
               <span>encontra o</span>
-              <span className="text-transparent-outline-thick relative inline-block italic pr-4">
+              <span className="text-transparent-outline-thick relative inline-block italic pr-2 sm:pr-4 mt-1 sm:mt-0">
                   foco.
                   <div className="absolute -inset-4 bg-gradient-to-r from-brand-red/30 to-transparent blur-3xl -z-10 rounded-full"></div>
               </span>
             </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed mb-12 animate-fade-up" style={{ animationDelay: '0.2s' }}>
+        <p className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed mb-10 md:mb-12 animate-fade-up px-2" style={{ animationDelay: '0.2s' }}>
             Construído literalmente <strong className="text-white font-medium">do zero</strong>. Uma estrutura premium projetada para quem não aceita menos que a própria <strong className="text-brand-red font-medium">evolução</strong>.
         </p>
 
