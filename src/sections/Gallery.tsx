@@ -1,21 +1,21 @@
 
 export function Gallery() {
   return (
-    <section className="py-32 px-6 bg-brand-pure relative border-t border-white/5">
+    <section className="py-16 md:py-32 px-6 bg-brand-pure relative border-t border-white/5">
       
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-red/10 mix-blend-screen filter blur-[120px] animate-blob"></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-outfit font-black tracking-tight text-white mb-6">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-4xl md:text-6xl font-outfit font-black tracking-tight text-white mb-4 md:mb-6">
             O seu <span className="text-shimmer-red">campo de batalha</span>.
           </h2>
-          <p className="text-xl text-gray-400 font-light">Um vislumbre da nossa estrutura. O resto, você descobre suando.</p>
+          <p className="text-lg md:text-xl text-gray-400 font-light">Um vislumbre da nossa estrutura. O resto, você descobre suando.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
           <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl">
             <img 
               src="/fotos/WhatsApp Image 2026-09-21 at 15.04.34.jpeg" 

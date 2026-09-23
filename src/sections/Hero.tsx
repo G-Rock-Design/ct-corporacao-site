@@ -10,7 +10,7 @@ export function Hero() {
     <section id="inicio" className="relative z-10 min-h-[100vh] flex flex-col items-center justify-center pt-28 pb-20 px-6 overflow-hidden bg-brand-black">
       
       {/* Immersive Background Effects & Video */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden md:static md:overflow-visible">
           {/* Video Background (Desktop Only) */}
           <video 
             autoPlay 
@@ -22,16 +22,19 @@ export function Hero() {
             <source src="/fotos/Gym_logo_promotional_video_1080p_20260922173728.mp4" type="video/mp4" />
           </video>
 
-          {/* Video Background (Mobile Only) */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="block md:hidden absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-lighten"
-          >
-            <source src="/fotos/Gym_logo_promotional_video_1080p_20260922175540.mp4" type="video/mp4" />
-          </video>
+          {/* Video Background (Mobile Only - Fixed for Parallax Effect) */}
+          <div className="md:hidden fixed top-0 left-0 w-[100vw] h-[100vh] -z-10 pointer-events-none">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              preload="auto" 
+              className="w-full h-full object-cover opacity-20 mix-blend-lighten"
+            >
+              <source src="/fotos/Gym_logo_promotional_video_1080p_20260922175540.mp4" type="video/mp4" />
+            </video>
+          </div>
           
           {/* Glow Orbs */}
           <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-red/10 mix-blend-screen filter blur-[120px] animate-blob"></div>
@@ -47,15 +50,15 @@ export function Hero() {
       <div className="max-w-5xl mx-auto w-full text-center relative z-10 mt-12 flex flex-col items-center">
         
         {/* Floating Badge */}
-        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-gray-300 mb-10 animate-fade-up shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-float-complex">
-            <MapPin className="w-4 h-4 text-brand-red animate-pulse" />
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-gray-300 mb-8 sm:mb-10 animate-fade-up shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-float-complex">
+            <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-brand-red animate-pulse" />
             <span className="tracking-wide">Duque de Caxias, RJ</span>
-            <div className="w-[1px] h-4 bg-white/20 mx-2"></div>
+            <div className="w-[1px] h-3 sm:h-4 bg-white/20 mx-1 sm:mx-2"></div>
             <span className="text-teal-400 font-semibold">Matrículas Abertas</span>
         </div>
 
         {/* Aggressive Typography */}
-        <h1 className="text-6xl md:text-8xl lg:text-[110px] font-outfit font-black tracking-tighter leading-[0.9] text-white mb-8 animate-fade-up flex flex-col items-center" style={{ animationDelay: '0.1s' }}>
+        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[110px] font-outfit font-black tracking-tighter leading-[1] md:leading-[0.9] text-white mb-6 md:mb-8 animate-fade-up flex flex-col items-center" style={{ animationDelay: '0.1s' }}>
             <span className="text-shimmer-gradient">Onde o ferro</span>
             <span className="flex items-center gap-4 mt-2">
               <span>encontra o</span>

@@ -7,23 +7,23 @@ export function Contact() {
   const whatsappUrl = `https://wa.me/5521997572052?text=${whatsappMsg}`;
 
   return (
-    <section id="contato" className="py-32 px-6 bg-brand-black relative text-white border-t border-white/5 overflow-hidden">
+    <section id="contato" className="py-16 md:py-32 px-6 bg-brand-black relative text-white border-t border-white/5 overflow-hidden">
       
       {/* Background Atmosphere */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(237,28,36,0.15)_0%,transparent_60%)]"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Info */}
-          <div className="space-y-12">
+          <div className="space-y-10 md:space-y-12">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-gray-300">
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
                 Matrículas Abertas
               </div>
-              <h2 className="text-5xl md:text-6xl font-outfit font-black tracking-tight mb-6 text-white">
+              <h2 className="text-4xl md:text-6xl font-outfit font-black tracking-tight mb-4 md:mb-6 text-white">
                 Hora de dar <br/><span className="text-brand-red">o primeiro passo.</span>
               </h2>
               <p className="text-xl text-gray-400 font-light leading-relaxed">
@@ -73,15 +73,15 @@ export function Contact() {
           </div>
 
           {/* Action Card */}
-          <div className="glass-dark p-12 md:p-16 rounded-[2rem] glow-border relative overflow-hidden text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10 group">
+          <div className="glass-dark p-8 md:p-16 rounded-[2rem] glow-border relative overflow-hidden text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10 group">
             <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-teal-500/20 transition-colors duration-700"></div>
             
-            <div className="w-24 h-24 bg-[#25D366]/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(37,211,102,0.2)] animate-pulse">
-              <MessageCircle className="w-12 h-12 text-[#25D366]" />
+            <div className="w-20 h-20 md:w-24 md:h-24 bg-[#25D366]/10 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 shadow-[0_0_30px_rgba(37,211,102,0.2)] animate-pulse">
+              <MessageCircle className="w-10 h-10 md:w-12 md:h-12 text-[#25D366]" />
             </div>
             
-            <h3 className="text-4xl font-outfit font-black mb-4">Fale com a equipe</h3>
-            <p className="text-gray-400 font-light mb-10 max-w-sm mx-auto text-lg">
+            <h3 className="text-3xl md:text-4xl font-outfit font-black mb-4">Fale com a equipe</h3>
+            <p className="text-gray-400 font-light mb-8 md:mb-10 max-w-sm mx-auto text-lg">
               Toque no botão abaixo para nos chamar no WhatsApp. Resposta rápida garantida!
             </p>
             

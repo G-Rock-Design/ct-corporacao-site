@@ -135,6 +135,16 @@
   .glow-border:hover::before {
       opacity: 1;
   }
+  
+  /* Performance optimization for mobile devices */
+  @media (max-width: 768px) {
+    .animate-blob, .animate-spotlight, .animate-float-complex, .animate-shimmer {
+      animation: none !important;
+    }
+    .glow-border::before {
+      animation: none !important;
+    }
+  }
 }
 
 /* Custom Scrollbar */

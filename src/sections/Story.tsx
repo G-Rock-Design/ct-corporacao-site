@@ -1,13 +1,13 @@
 
 export function Story() {
   return (
-    <section id="historia" className="py-32 px-6 bg-[#050505] relative overflow-hidden">
+    <section id="historia" className="py-16 md:py-32 px-6 bg-[#050505] relative overflow-hidden">
       
       {/* Immersive Deep Red Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[radial-gradient(circle_at_center,rgba(237,28,36,0.08)_0%,transparent_60%)] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           
           {/* Text Content */}
           <div className="flex-1 space-y-10 relative z-10">

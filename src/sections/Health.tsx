@@ -3,7 +3,7 @@ import { HeartPulse } from 'lucide-react';
 
 export function Health() {
   return (
-    <section className="py-32 px-6 bg-brand-black relative overflow-hidden">
+    <section className="py-16 md:py-32 px-6 bg-brand-black relative overflow-hidden">
       
       {/* Ethereal Mesh Background */}
       <div className="absolute inset-0 bg-animated-mesh opacity-80 z-0 pointer-events-none"></div>
@@ -14,11 +14,11 @@ export function Health() {
           <HeartPulse className="w-10 h-10 text-teal-400" />
         </div>
         
-        <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tight text-white leading-[1.1]">
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-outfit font-black tracking-tight text-white leading-[1.1]">
           Sua saúde em <br className="md:hidden"/><span className="text-transparent-outline-thick italic pr-2 text-teal-400">movimento</span>.
         </h2>
         
-        <div className="text-2xl text-gray-300 font-light leading-relaxed space-y-8 max-w-3xl mx-auto">
+        <div className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed space-y-6 md:space-y-8 max-w-3xl mx-auto">
           <p>
             O treino transcende a estética. É sobre forjar disciplina, curar o corpo e fortalecer a mente contra as adversidades do dia a dia.
           </p>

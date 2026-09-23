@@ -2,13 +2,13 @@ import { ShieldCheck, Award, Users } from 'lucide-react';
 
 export function Team() {
   return (
-    <section id="equipe" className="py-32 px-6 bg-brand-black relative overflow-hidden border-t border-white/5">
+    <section id="equipe" className="py-16 md:py-32 px-6 bg-brand-black relative overflow-hidden border-t border-white/5">
       
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-brand-red/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           
           {/* Image Frame */}
           <div className="w-full lg:w-1/2 relative z-10">
@@ -30,16 +30,16 @@ export function Team() {
           </div>
 
           {/* Text Content */}
-          <div className="w-full lg:w-1/2 space-y-10 relative z-10">
+          <div className="w-full lg:w-1/2 space-y-8 md:space-y-10 relative z-10">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-brand-red/30 bg-brand-red/10 text-sm font-medium text-brand-red shadow-[0_0_15px_rgba(237,28,36,0.2)]">
                 <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
                 Nosso Time
               </div>
-              <h2 className="text-5xl md:text-6xl font-outfit font-black tracking-tight text-white leading-[1.1] mb-6">
+              <h2 className="text-4xl md:text-6xl font-outfit font-black tracking-tight text-white leading-[1.1] mb-4 md:mb-6">
                 Quem constrói <br/><span className="text-shimmer-red">o seu resultado.</span>
               </h2>
-              <p className="text-xl text-gray-400 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
                 Um equipamento de ponta só entrega o seu máximo nas mãos de quem entende de verdade. No CT Corporação, nossa equipe é formada por <strong className="text-white font-medium">profissionais credenciados</strong>.
               </p>
             </div>

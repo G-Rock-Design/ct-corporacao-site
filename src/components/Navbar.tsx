@@ -40,21 +40,21 @@ export function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <button 
-          className="md:hidden text-white hover:text-brand-red transition-colors"
+          className="md:hidden text-white hover:text-brand-red transition-colors p-1"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
       </div>
 
       {/* Mobile Nav Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass-dark border-b border-white/5 shadow-2xl py-6 px-6 flex flex-col gap-6 animate-fade-up">
-          <a href="#historia" onClick={(e) => handleNavClick(e, 'historia')} className="text-lg font-medium text-gray-300 hover:text-white">História</a>
-          <a href="#estrutura" onClick={(e) => handleNavClick(e, 'estrutura')} className="text-lg font-medium text-gray-300 hover:text-white">Estrutura</a>
-          <a href="#equipe" onClick={(e) => handleNavClick(e, 'equipe')} className="text-lg font-medium text-gray-300 hover:text-white">Equipe</a>
-          <a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-lg font-medium text-brand-red hover:text-red-400">Contato</a>
+        <div className="md:hidden absolute top-full left-0 right-0 glass-dark border-b border-white/5 shadow-2xl py-4 px-5 flex flex-col gap-4 animate-fade-up z-40">
+          <a href="#historia" onClick={(e) => handleNavClick(e, 'historia')} className="text-base font-medium text-gray-300 hover:text-white">História</a>
+          <a href="#estrutura" onClick={(e) => handleNavClick(e, 'estrutura')} className="text-base font-medium text-gray-300 hover:text-white">Estrutura</a>
+          <a href="#equipe" onClick={(e) => handleNavClick(e, 'equipe')} className="text-base font-medium text-gray-300 hover:text-white">Equipe</a>
+          <a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-base font-medium text-brand-red hover:text-red-400">Contato</a>
         </div>
       )}
     </nav>
