@@ -4,7 +4,9 @@ import { Story } from './sections/Story';
 import { Structure } from './sections/Structure';
 import { Health } from './sections/Health';
 import { Team } from './sections/Team';
+import { Personal } from './sections/Personal';
 import { Gallery } from './sections/Gallery';
+import { Pricing } from './sections/Pricing';
 import { Contact } from './sections/Contact';
 import { Footer } from './components/Footer';
 
@@ -18,7 +20,9 @@ export default function App() {
         <Structure />
         <Health />
         <Team />
+        <Personal />
         <Gallery />
+        <Pricing />
         <Contact />
       </main>
       <Footer />

@@ -34,6 +34,7 @@ export function Footer() {
             <li><a href="#historia" onClick={(e) => handleNavClick(e, 'historia')} className="hover:text-white transition-colors">Nossa História</a></li>
             <li><a href="#estrutura" onClick={(e) => handleNavClick(e, 'estrutura')} className="hover:text-white transition-colors">A Estrutura</a></li>
             <li><a href="#equipe" onClick={(e) => handleNavClick(e, 'equipe')} className="hover:text-white transition-colors">Nossa Equipe</a></li>
+            <li><a href="#planos" onClick={(e) => handleNavClick(e, 'planos')} className="hover:text-white transition-colors">Planos e Valores</a></li>
           </ul>
         </div>
 

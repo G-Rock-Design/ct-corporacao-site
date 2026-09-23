@@ -35,6 +35,7 @@ export function Navbar() {
           <a href="#historia" onClick={(e) => handleNavClick(e, 'historia')} className="text-sm text-gray-300 hover:text-white transition-colors">História</a>
           <a href="#estrutura" onClick={(e) => handleNavClick(e, 'estrutura')} className="text-sm text-gray-300 hover:text-white transition-colors">Estrutura</a>
           <a href="#equipe" onClick={(e) => handleNavClick(e, 'equipe')} className="text-sm text-gray-300 hover:text-white transition-colors">Equipe</a>
+          <a href="#planos" onClick={(e) => handleNavClick(e, 'planos')} className="text-sm text-gray-300 hover:text-white transition-colors">Planos</a>
           <a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-sm text-white hover:text-brand-red transition-colors px-4 py-2 rounded-full border border-white/10 hover:border-brand-red/50 bg-white/5">Contato</a>
         </div>
 
@@ -54,6 +55,7 @@ export function Navbar() {
           <a href="#historia" onClick={(e) => handleNavClick(e, 'historia')} className="text-base font-medium text-gray-300 hover:text-white">História</a>
           <a href="#estrutura" onClick={(e) => handleNavClick(e, 'estrutura')} className="text-base font-medium text-gray-300 hover:text-white">Estrutura</a>
           <a href="#equipe" onClick={(e) => handleNavClick(e, 'equipe')} className="text-base font-medium text-gray-300 hover:text-white">Equipe</a>
+          <a href="#planos" onClick={(e) => handleNavClick(e, 'planos')} className="text-base font-medium text-gray-300 hover:text-white">Planos</a>
           <a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-base font-medium text-brand-red hover:text-red-400">Contato</a>
         </div>
       )}

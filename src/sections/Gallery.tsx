@@ -15,7 +15,9 @@ export function Gallery() {
           <p className="text-lg md:text-xl text-gray-400 font-light">Um vislumbre da nossa estrutura. O resto, você descobre suando.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          
+          {/* Foto 1 - Existente */}
           <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl">
             <img 
               src="/fotos/WhatsApp Image 2026-09-21 at 15.04.34.jpeg" 
@@ -23,26 +25,82 @@ export function Gallery() {
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            <div className="absolute bottom-8 left-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-              <h4 className="text-3xl font-outfit font-bold text-white mb-2">Estrutura Ampla</h4>
-              <p className="text-brand-red font-medium tracking-wide uppercase text-sm">Pronto para o treino</p>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Estrutura Ampla</h4>
+              <p className="text-brand-red font-medium tracking-wide uppercase text-xs">Pronto para o treino</p>
             </div>
           </div>
           
-          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.2s' }}>
+          {/* Foto 2 - Existente */}
+          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.1s' }}>
             <img 
               src="/fotos/408778262_1592366098180153_6296518003851320317_n.jpg" 
               alt="Equipamentos do CT Corporação" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            <div className="absolute bottom-8 left-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-              <h4 className="text-3xl font-outfit font-bold text-white mb-2">Linha de Máquinas</h4>
-              <p className="text-teal-400 font-medium tracking-wide uppercase text-sm">Alta Performance</p>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Linha de Máquinas</h4>
+              <p className="text-teal-400 font-medium tracking-wide uppercase text-xs">Alta Performance</p>
             </div>
           </div>
+
+          {/* Foto 3 - Nova */}
+          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.2s' }}>
+            <img 
+              src="/fotos/galeria-1.png" 
+              alt="CT Corporação" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Foco e Disciplina</h4>
+              <p className="text-brand-blue font-medium tracking-wide uppercase text-xs">O Ambiente Perfeito</p>
+            </div>
+          </div>
+
+          {/* Foto 4 - Nova */}
+          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.3s' }}>
+            <img 
+              src="/fotos/galeria-2.png" 
+              alt="CT Corporação" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Pesos Livres</h4>
+              <p className="text-brand-red font-medium tracking-wide uppercase text-xs">Força Bruta</p>
+            </div>
+          </div>
+
+          {/* Foto 5 - Nova */}
+          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.4s' }}>
+            <img 
+              src="/fotos/galeria-3.png" 
+              alt="CT Corporação" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Ergonomia</h4>
+              <p className="text-teal-400 font-medium tracking-wide uppercase text-xs">Biomecânica a seu favor</p>
+            </div>
+          </div>
+
+          {/* Foto 6 - Nova */}
+          <div className="rounded-[2rem] overflow-hidden glass-dark glow-border group relative aspect-[4/3] bg-brand-black shadow-2xl" style={{ animationDelay: '0.5s' }}>
+            <img 
+              src="/fotos/galeria-4.png" 
+              alt="CT Corporação" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <h4 className="text-2xl font-outfit font-bold text-white mb-1">Evolução Constante</h4>
+              <p className="text-white font-medium tracking-wide uppercase text-xs">Treino Levado a Sério</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
